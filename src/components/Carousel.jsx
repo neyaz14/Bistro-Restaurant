@@ -9,10 +9,11 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Slide from './Slide'
-
-import bgimg1 from '../assets/images/carousel1.jpg'
-import bgimg2 from '../assets/images/carousel2.jpg'
-import bgimg3 from '../assets/images/carousel3.jpg'
+import b01 from "../assets/home/01.jpg";
+import b02 from "../assets/home/02.jpg";
+import b03 from "../assets/home/03.png";
+import b04 from "../assets/home/04.jpg";
+import b05 from "../assets/home/05.png";
 
 export default function Carousel() {
   return (
@@ -34,22 +35,37 @@ export default function Carousel() {
       >
         <SwiperSlide>
           <Slide
-            image={bgimg1}
-            text='Get Your Web Development Projects Done in minutes'
+            image={b01}
+            
+          />
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Slide
+            image={b02}
+            
+          />
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Slide
+            image={b03}
+            
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
-            image={bgimg2}
-            text='Get Your Graphics Design Projects Done in minutes'
+            image={b04}
+            
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
-            image={bgimg3}
-            text='Start Your Digital Marketing Campaigns up n running'
+            image={b05}
+            
           />
         </SwiperSlide>
+
       </Swiper>
     </div>
   )

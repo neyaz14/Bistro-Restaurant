@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import logo from '../assets/images/logo.png'
+import logo from '../assets/logo.png'
 import { AuthContext } from '../providers/AuthProvider'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
           <img className='w-auto h-7' src={logo} alt='' />
-          <span className='font-bold'>SoloSphere</span>
+          <span className='font-bold'>Bistro Boss Restuarant</span>
         </Link>
       </div>
       <div className='flex-none'>

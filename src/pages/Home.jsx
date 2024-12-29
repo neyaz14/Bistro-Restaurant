@@ -1,11 +1,12 @@
 import Carousel from '../components/Carousel'
-import TabCategories from '../components/TabCategories'
+import OrderOnline from '../components/OrderOnline'
+
 
 const Home = () => {
   return (
     <div>
       <Carousel />
-      <TabCategories />
+      <OrderOnline></OrderOnline>
     </div>
   )
 }
