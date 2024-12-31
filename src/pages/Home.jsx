@@ -1,12 +1,16 @@
-import Carousel from '../components/Carousel'
-import OrderOnline from '../components/OrderOnline'
+import BistroComponents from "../HomeComponents/BistroComponents"
+import MainSlider from "../HomeComponents/MainSlider"
+import OrderOnline from "../HomeComponents/OrderOnline"
+
 
 
 const Home = () => {
   return (
     <div>
-      <Carousel />
+    
+      <MainSlider></MainSlider>
       <OrderOnline></OrderOnline>
+      <BistroComponents></BistroComponents>
     </div>
   )
 }
