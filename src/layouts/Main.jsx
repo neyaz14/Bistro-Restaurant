@@ -4,11 +4,11 @@ import Footer from '../components/Footer'
 
 const Main = () => {
   return (
-    <div>
+    <div className='mx-auto '>
       {/* Navbar */}
       <Navbar />
       {/* Outlet */}
-      <div className='min-h-[calc(100vh-306px)]'>
+      <div className='min-h-[calc(100vh-306px)] w-11/12 mx-auto'>
         <Outlet />
       </div>
       {/* Footer */}

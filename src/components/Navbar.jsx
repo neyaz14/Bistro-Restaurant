@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   return (
-    <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
+    <div className='flex items-center  w-[88.3%]  z-50 bg-opacity-30 bg-black mx-auto fixed ml-[90px] text-white'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
           <img className='w-auto h-7' src={logo} alt='' />
           <span className='font-bold'>Bistro Boss Restuarant</span>
         </Link>
       </div>
+
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-1'>
           <li>
