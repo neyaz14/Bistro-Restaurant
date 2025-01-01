@@ -1,7 +1,8 @@
 import React from 'react';
 
-const MenuItem = ({ item }) => {
-    const {name, image, price, recipe} = item;
+const MenuCategory = ({card}) => {
+    const {name, image, price, recipe} = card;
+    // console.log(name, image, price, recipe)
     return (
         <div className="flex space-x-2">
             <img style={{borderRadius: '0 200px 200px 200px'}} className="w-[100px] border" src={image} alt="" />
@@ -12,6 +13,7 @@ const MenuItem = ({ item }) => {
             <p className="text-yellow-500">${price}</p>
         </div>
     );
-};
+}; 
+ 
 
-export default MenuItem;
+export default MenuCategory;

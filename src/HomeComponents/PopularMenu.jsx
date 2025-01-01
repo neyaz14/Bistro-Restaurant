@@ -2,32 +2,29 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import MenuItem from '../components/MenuItem';
+import Title from '../components/Title';
+import useMenu from '../Hooks/UseMenu';
 
 const PopularMenu = () => {
-    const [menu, setmenu] = useState([]);
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const popular = data.filter(items=> items.category === "popular")    
-                setmenu(popular)
+    // const [menu, setmenu] = useState([]);
+    // useEffect(() => {
+    //     fetch('menu.json')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const popular = data.filter(items=> items.category === "popular")    
+    //             setmenu(popular)
             
-            })
-    }, [])
+    //         })
+    // }, [])
+    const [menu] = useMenu();
+    const popular = menu.filter(items=> items.category === "popular")     
     return (
         <div>
-            <div className='flex flex-col items-center justify-center'>
-                <div className=' text-center'>
-                    <p className='text-yellow-400  text-center'>---Check it out---</p>
-                </div>
-                <div className='border-y-2 w-80 py-4 text-center my-4'>
-                    <h1 className='text-4xl'>FROM OUR MENU</h1>
-                </div>
-            </div>
+            <Title heading={"FROM OUR MENU"} subHeading={"Check it out"}></Title>
             <div className=" py-10 px-5">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {menu.map((item) => (
+                        {popular.map((item) => (
                            <MenuItem item={item} key={item.key}></MenuItem>
                         ))}
                     </div>

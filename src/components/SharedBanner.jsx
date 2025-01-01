@@ -4,10 +4,11 @@ const SharedBanner = ({img, header, text}) => {
     return (
         <div>
             <div
-                className="hero min-h-screen"
+                className="hero h-[700px] "
                 style={{
                     backgroundImage: `url(${img})`,
                 }}>
+                    
                 <div className="hero-overlay "></div>
                 <div className="hero-content text-neutral-content text-center">
                     <div className="bg-opacity-50 bg-black px-44 py-20">

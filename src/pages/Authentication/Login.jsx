@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state || '/'
-  console.log(from)
+  // console.log(from)
   const { signIn, signInWithGoogle } = useContext(AuthContext)
 
   // Google Signin
@@ -19,7 +19,7 @@ const Login = () => {
       toast.success('Signin Successful')
       navigate(from, { replace: true })
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err?.message)
     }
   }
@@ -30,14 +30,14 @@ const Login = () => {
     const form = e.target
     const email = form.email.value
     const pass = form.password.value
-    console.log({ email, pass })
+    // console.log({ email, pass })
     try {
       //User Login
       await signIn(email, pass)
       toast.success('Signin Successful')
       navigate(from, { replace: true })
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err?.message)
     }
   }
