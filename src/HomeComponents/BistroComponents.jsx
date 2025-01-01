@@ -8,7 +8,7 @@ const BistroComponents = () => {
                 <div
                     className="absolute  inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: `url(${bg})`, // Replace with your image URL
+                        backgroundImage: `url(${bg})`, 
                     }}
                 ></div>
 

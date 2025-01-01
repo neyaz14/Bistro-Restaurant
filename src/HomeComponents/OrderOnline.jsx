@@ -19,7 +19,7 @@ const OrderOnline = () => {
     return (
         <div>
             <div className='flex flex-col items-center justify-center'>
-            <div className=' text-center'>
+                <div className=' text-center'>
                     <p className='text-yellow-400  text-center'>---From 11:00am to 10:00pm---</p>
                 </div>
                 <div className='border-y-2 w-80 py-4 text-center my-4'>
