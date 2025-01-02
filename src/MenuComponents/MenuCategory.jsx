@@ -1,19 +1,27 @@
-import React from 'react';
 
-const MenuCategory = ({card}) => {
-    const {name, image, price, recipe} = card;
-    // console.log(name, image, price, recipe)
+import { Link } from 'react-router-dom';
+import SharedBanner from '../components/SharedBanner';
+import MenuItem from '../MenuComponents/MenuItem';
+
+const MenuCategory = ({ items, title, img }) => {
     return (
-        <div className="flex space-x-2">
-            <img style={{borderRadius: '0 200px 200px 200px'}} className="w-[100px] border" src={image} alt="" />
-            <div>
-                <h3 className="uppercase">{name}----------</h3>
-                <p>{recipe}</p>
+        <div className='pt-6'>
+            {title && <SharedBanner img={img} header={title}></SharedBanner>}
+            <div className="grid md:grid-cols-2 gap-10 my-10">
+                {
+                    items.map(item => <MenuItem
+                        key={item._id}
+                        item={item}
+                    ></MenuItem>)
+                }
             </div>
-            <p className="text-yellow-500">${price}</p>
+            <div className='flex justify-center my-2'>
+                <Link to={`/orderFood/${title}`}>
+                    <button className="btn  btn-outline hover:text-orange-50 hover:bg-orange-400 border-0 border-orange-400 hover:border-orange-600 text-orange-400 border-b-4 mt-4">See all {title}</button>
+                </Link>
+            </div>
         </div>
     );
-}; 
- 
+};
 
 export default MenuCategory;

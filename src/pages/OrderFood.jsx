@@ -8,7 +8,7 @@ import { useParams } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import CategoryTab from '../OrderComponents/CategoryTab';
 import SharedBanner from '../components/SharedBanner';
-import FoodCard from '../OrderComponents/FoodCard';
+// import FoodCard from '../OrderComponents/FoodCard';
 
 const OrderFood = () => {
     const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
@@ -31,7 +31,7 @@ const OrderFood = () => {
             <SharedBanner img={orderCoverImg} text={'Would you like to try a dish?'} header="Order Food"></SharedBanner>
 
 
-            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className='grid gap-3 justify-center my-5 '>
+            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className='grid  justify-center my-5 '>
                 <TabList>
                     <Tab>Salad</Tab>
                     <Tab>Pizza</Tab>
@@ -39,39 +39,27 @@ const OrderFood = () => {
                     <Tab>Dessert</Tab>
                     <Tab>Drinks</Tab>
                 </TabList>
-                <TabPanel  className='grid grid-cols-3'>
+                <TabPanel  className=''>
                     
-                   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
-                   {
-                        salad.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                    }
-                   </div>
                    
-                    {/* <CategoryTab items={salad}></CategoryTab> */}
+                   
+                    <CategoryTab items={salad}></CategoryTab>
                 </TabPanel>
                 <TabPanel>
-                    {/* <CategoryTab items={pizza}></CategoryTab> */}
-                    {
-                        pizza.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                    }
+                    <CategoryTab items={pizza}></CategoryTab>
+                   
                 </TabPanel>
                 <TabPanel>
-                    {/* <CategoryTab items={soup}></CategoryTab> */}
-                    {
-                        soup.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                    }
+                    <CategoryTab items={soup}></CategoryTab>
+                    
                 </TabPanel>
                 <TabPanel>
-                    {/* <CategoryTab items={desserts}></CategoryTab> */}
-                    {
-                        desserts.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                    }
+                    <CategoryTab items={desserts}></CategoryTab>
+                    
                 </TabPanel>
                 <TabPanel>
-                    {/* <CategoryTab items={drinks}></CategoryTab> */} 
-                    {
-                        drinks.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                    }
+                    <CategoryTab items={drinks}></CategoryTab> 
+                    
                 </TabPanel>
             </Tabs>
         </div>
