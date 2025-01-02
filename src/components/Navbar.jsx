@@ -22,6 +22,9 @@ const Navbar = () => {
             <li>
               <Link to='/menu'>Menu</Link>
             </li>
+            <li>
+              <Link to='/orderFood'>Order Food</Link>
+            </li>
           </div>
 
           {!user && (
@@ -58,7 +61,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/my-posted-jobs'>My Posted Jobs</Link>
+                  <Link to='/orderFood'>Offer Food</Link>
                 </li>
                 <li>
                   <Link to='/my-bids'>My Bids</Link>
