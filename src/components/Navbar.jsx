@@ -18,6 +18,13 @@ const Navbar = () => {
           <li>
             <Link to='/'>Home</Link>
           </li>
+      {/* cart badge option  */}
+          <li>
+            <button className="btn text-white border-0 btn-sm bg-white bg-opacity-15 ">
+              Cart
+              <div className="badge badge-primary bg-opacity-55">1</div>
+            </button>
+          </li>
           <div className='lg:flex hidden'>
             <li>
               <Link to='/menu'>Menu</Link>

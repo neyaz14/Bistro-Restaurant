@@ -8,7 +8,7 @@ import { useParams } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import CategoryTab from '../OrderComponents/CategoryTab';
 import SharedBanner from '../components/SharedBanner';
-// import FoodCard from '../OrderComponents/FoodCard';
+
 
 const OrderFood = () => {
     const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
@@ -31,7 +31,7 @@ const OrderFood = () => {
             <SharedBanner img={orderCoverImg} text={'Would you like to try a dish?'} header="Order Food"></SharedBanner>
 
 
-            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className='grid  justify-center my-5 '>
+            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className='flex  justify-center my-5 flex-col items-center'>
                 <TabList>
                     <Tab>Salad</Tab>
                     <Tab>Pizza</Tab>
