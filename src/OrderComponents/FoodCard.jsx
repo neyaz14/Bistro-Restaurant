@@ -3,35 +3,44 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import useCart from "../Hooks/UseCart";
 
-const FoodCard = ({item}) => {
-    const {user} = useContext(AuthContext) ;
+const FoodCard = ({ item }) => {
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const {name, image, price, recipe, _id} = item;
-    const handleAddtoCart = ()=>{
-        if(user && user.email){
-            // TODO : send cardItem to the db
+    const { name, image, price, recipe, _id } = item;
+    const axiosSecure = UseAxiosSecure();
+
+    const [cart, refetch] = useCart();
+
+
+    const handleAddtoCart = () => {
+        if (user && user.email) {
+            // DOne : send cardItem to the db
             const cartItem = {
-                foodId : _id,
-                userEmail : user.email,
-                foodName : name,
+                foodId: _id,
+                userEmail: user.email,
+                foodName: name,
                 foodImage: image,
-                foodPrice : price,
-                foodRecipe : recipe 
+                foodPrice: price,
+                foodRecipe: recipe
             }
 
-            axios.post('http://localhost:5000/carts', cartItem)
-            .then(res=>{
-               if(res.data.insertedId){
-                toast.success(`${item.name} Successfully added in ${user?.displayName}'s cart `)
-               }
-            })
-        }else{
+            axiosSecure.post('/carts', cartItem)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        toast.success(`${item.name} Successfully added in ${user?.displayName}'s cart `,{ position: "top-center" })
+                        refetch();
+                    }
+
+                })
+        } else {
             toast.error('You are not logged in ')
             // state set kora hoise PrivateRoute er state location.pathname jei vabe set kora hoise sei vabe  
-            navigate('/login', {state:location.pathname})
-            
+            navigate('/login', { state: location.pathname })
+
         }
     }
     return (
