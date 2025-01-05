@@ -21,12 +21,14 @@ const Navbar = () => {
           <li>
             <Link to='/'>Home</Link>
           </li>
-      {/* cart badge option  */}
+          {/* cart badge option  */}
           <li>
-            <button className="btn text-white border-0 btn-sm bg-white bg-opacity-15 ">
-              Cart
-              <div className="badge badge-primary bg-opacity-55">{cart.length}</div>
-            </button>
+            <Link to='/dashboard/cart'>
+              <button className="btn text-white border-0 btn-sm bg-white bg-opacity-15 ">
+                Cart
+                <div className="badge badge-primary bg-opacity-55">{cart.length}</div>
+              </button>
+            </Link>
           </li>
           <div className='lg:flex hidden'>
             <li>

@@ -6,6 +6,8 @@ import Register from '../pages/Authentication/Register'
 import ErrorPage from '../pages/ErrorPage'
 import Menu from '../pages/Menu'
 import OrderFood from '../pages/OrderFood'
+import Dashboard from '../layouts/Dashboard'
+import Cart from '../pages/Dashboard/Cart'
 
 const router = createBrowserRouter([
   {
@@ -34,7 +36,17 @@ const router = createBrowserRouter([
         element: <OrderFood />,
       },
     ],
-  },
+
+  },{
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: '/dashboard/cart',
+        element: <Cart></Cart>
+      }
+    ]
+  }
 ])
 
 export default router
