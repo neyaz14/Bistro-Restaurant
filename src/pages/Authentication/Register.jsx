@@ -4,12 +4,16 @@ import logo from '../../assets/images/logo.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import UseAxiosPublic from '../../Hooks/UseAxiosPublic'
 
 const Registration = () => {
+  const axiosPublic = UseAxiosPublic();
   const navigate = useNavigate()
   const { signInWithGoogle, createUser, updateUserProfile, setUser } =
     useContext(AuthContext)
 
+
+// signUp using email and pw
   const handleSignUp = async e => {
     e.preventDefault()
     const form = e.target
@@ -17,13 +21,24 @@ const Registration = () => {
     const name = form.name.value
     const photo = form.photo.value
     const pass = form.password.value
-    // console.log({ email, pass, name, photo })
+    
     try {
       //2. User Registration
       const result = await createUser(email, pass)
-      // console.log(result)
       await updateUserProfile(name, photo)
       setUser({ ...result.user, photoURL: photo, displayName: name })
+  // set user data in the db
+      const userInfo={
+        name: form.name.value,
+        email : form.email.value,
+        photoURL: form.photo.value
+      }
+      axiosPublic.post('/users', userInfo)
+      .then(res=>{
+        if(res.data.insertedId){
+          toast.success("Successfully added your info in the database")
+        }
+      })
       toast.success('Signup Successful')
       navigate('/')
     } catch (err) {
@@ -36,7 +51,21 @@ const Registration = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
-
+      .then(result =>{
+        console.log(result.user);
+        const userInfo = {
+            email: result.user?.email,
+            name: result.user?.displayName,
+            photoURL: result.user?.photoURL,
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(res =>{
+            // console.log(res.data);
+            // navigate('/');
+            toast.success("Successfully added your info in the database")
+        })
+    })
+    
       toast.success('Signin Successful')
       navigate('/')
     } catch (err) {

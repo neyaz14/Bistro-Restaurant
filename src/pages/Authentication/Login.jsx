@@ -6,8 +6,10 @@ import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast';
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import UseAxiosPublic from '../../Hooks/UseAxiosPublic'
 const Login = () => {
   const navigate = useNavigate()
+  const axiosPublic = UseAxiosPublic();
   // const [log]
   const captchaRef = useRef(null)
   const [disabled, setDisabled] = useState(true);
@@ -20,6 +22,23 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
+        .then(result => {
+          console.log(result.user);
+          const userInfo = {
+            email: result.user?.email,
+            name: result.user?.displayName,
+            photoURL: result.user?.photoURL,
+          }
+          axiosPublic.post('/users', userInfo)
+            .then(res => {
+              if(res.data.insertedId){
+                // console.log(res.data);
+                // navigate('/');
+                toast.success("Successfully added your info in the database")
+              }
+             
+            })
+        })
 
       toast.success('Signin Successful')
       navigate(from, { replace: true })
@@ -48,15 +67,15 @@ const Login = () => {
   }
 
 
-  const handleValidateCaptcha=() =>{
+  const handleValidateCaptcha = () => {
     const user_captcha_value = captchaRef.current.value;
-        if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
-        }
-        else {
-          toast.error('Invalid captcha. Are you a human ?')
-            setDisabled(true)
-        }
+    if (validateCaptcha(user_captcha_value)) {
+      setDisabled(false);
+    }
+    else {
+      toast.error('Invalid captcha. Are you a human ?')
+      setDisabled(true)
+    }
   }
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -162,12 +181,12 @@ const Login = () => {
               <label className="label">
                 <LoadCanvasTemplate />
               </label>
-              <input ref={captchaRef}  type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
+              <input ref={captchaRef} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
 
             </div>
             <div className="form-control mt-6">
               {/* TODO: apply disabled for re captcha */}
-              <input onClick={handleValidateCaptcha}  className="btn btn-sm btn-outline" value={'Validate Captcha'}  />
+              <input onClick={handleValidateCaptcha} className="btn btn-sm btn-outline" value={'Validate Captcha'} />
             </div>
             {/* button  */}
             <div className='mt-6'>
@@ -175,9 +194,9 @@ const Login = () => {
                 disabled={disabled}
                 type='submit'
                 className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white btn btn-primary'
-             />
-                Login  In
-              
+              />
+              Login  In
+
             </div>
 
           </form>

@@ -8,6 +8,7 @@ import Menu from '../pages/Menu'
 import OrderFood from '../pages/OrderFood'
 import Dashboard from '../layouts/Dashboard'
 import Cart from '../pages/Dashboard/Cart'
+import PrivateRoute from './PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
 
   },{
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element:<PrivateRoute> <Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: '/dashboard/cart',
