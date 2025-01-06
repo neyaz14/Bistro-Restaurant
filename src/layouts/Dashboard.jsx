@@ -12,9 +12,9 @@ const Dashboard = () => {
             <div className="w-64 min-h-screen bg-amber-200">
                 <ul className="menu p-4">
                     <li>
-                        <NavLink to="/dashboard/userHome">
+                        <NavLink to="/dashboard/userProfile">
                             <FaHome></FaHome>
-                            User Home</NavLink>
+                            User Profile</NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/reservation">

@@ -64,6 +64,7 @@ const Cart = () => {
                                 <th>
                                     {index + 1}
                                 </th>
+                                {/* food image */}
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
