@@ -9,6 +9,7 @@ import OrderFood from '../pages/OrderFood'
 import Dashboard from '../layouts/Dashboard'
 import Cart from '../pages/Dashboard/Cart'
 import PrivateRoute from './PrivateRoute'
+import AllUsers from '../pages/Dashboard/Allusers'
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,9 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/cart',
         element: <Cart></Cart>
+      },{
+        path: '/dashboard/allusers',
+        element: <AllUsers></AllUsers>
       }
     ]
   }
