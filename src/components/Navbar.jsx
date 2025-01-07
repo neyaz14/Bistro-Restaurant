@@ -6,7 +6,7 @@ import useCart from '../Hooks/UseCart'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [cart, refetch] = useCart();
-  console.log(cart)
+  // console.log(cart)
   return (
     <div className='flex items-center  w-full px-12   z-50 bg-opacity-30 bg-black mx-auto fixed  text-white'>
       <div className='flex-1'>

@@ -1,47 +1,51 @@
 import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/UseCart";
+import UseAdmin from "../Hooks/UseAdmin";
 
 
 const Dashboard = () => {
     const [cart] = useCart();
-    const isAdmin = true;
+    const isAdmin = UseAdmin();
 
     return (
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-amber-200">
                 <ul className="menu p-4">
-                {
-                        isAdmin ? <>
-                            <li>
-                                <NavLink to="/dashboard/adminHome">
-                                    <FaHome></FaHome>
-                                    Admin Home</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/addItems">
-                                    <FaUtensils></FaUtensils>
-                                    Add Items</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/manageItems">
-                                    <FaList></FaList>
-                                    Manage Items</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/bookings">
-                                    <FaBook></FaBook>
-                                    Manage Bookings</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/allusers">
-                                    <FaUsers></FaUsers>
-                                    All Users</NavLink>
-                            </li>
-                        </>
+                    {
+                        isAdmin ?
+                            <>
+                                <h1 className="text-2xl">Admin Dashboard</h1>
+                                <li>
+                                    <NavLink to="/dashboard/adminHome">
+                                        <FaHome></FaHome>
+                                        Admin Home</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/addItems">
+                                        <FaUtensils></FaUtensils>
+                                        Add Items</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/manageItems">
+                                        <FaList></FaList>
+                                        Manage Items</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/bookings">
+                                        <FaBook></FaBook>
+                                        Manage Bookings</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/allusers">
+                                        <FaUsers></FaUsers>
+                                        All Users</NavLink>
+                                </li>
+                            </>
                             :
                             <>
+                                <h1 className="text-2xl">User Dashboard</h1>
                                 <li>
                                     <NavLink to="/dashboard/userHome">
                                         <FaHome></FaHome>

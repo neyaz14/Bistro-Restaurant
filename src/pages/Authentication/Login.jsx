@@ -12,7 +12,7 @@ const Login = () => {
   const axiosPublic = UseAxiosPublic();
   // const [log]
   const captchaRef = useRef(null)
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
   const location = useLocation()
   const from = location?.state || '/'
   // console.log(from)
@@ -195,7 +195,7 @@ const Login = () => {
                 type='submit'
                 className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white btn btn-primary'
               />
-              Login  In
+             
 
             </div>
 
