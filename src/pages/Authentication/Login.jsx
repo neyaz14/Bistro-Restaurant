@@ -36,7 +36,6 @@ const Login = () => {
                 // navigate('/');
                 toast.success("Successfully added your info in the database")
               }
-             
             })
         })
 

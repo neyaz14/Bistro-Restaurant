@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { use } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import UseAxiosSecure from './UseAxiosSecure';
 
@@ -16,7 +15,7 @@ const UseAdmin = () => {
         } 
     });
 
-    
+
     return [isadmin,isAdminLoading]
 };
 
