@@ -2,22 +2,25 @@ import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart, FaU
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/UseCart";
 import UseAdmin from "../Hooks/UseAdmin";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 
 const Dashboard = () => {
     const [cart] = useCart();
-    const [isAdmin] = UseAdmin();
-    
+    const [isadmin, isAdminLoading] = UseAdmin();
+    // console.log(isadmin, isAdminLoading)
+    const {user} = useContext(AuthContext)
+
 
     return (
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-amber-200">
-                <ul className="menu p-4">
-                    {
-                        isAdmin ?
+                <ul className="menu p-4 ">
+                    {isadmin ?
                             <>
-                                <h1 className="text-2xl">Admin Dashboard</h1>
+                                <h1 className="text-2xl">{user.displayName} <small>admin</small> Dashboard</h1>
                                 <li>
                                     <NavLink to="/dashboard/adminHome">
                                         <FaHome></FaHome>
@@ -46,7 +49,7 @@ const Dashboard = () => {
                             </>
                             :
                             <>
-                                <h1 className="text-2xl">User Dashboard</h1>
+                                <h1 className="text-2xl my-4">{user.displayName} <big className="font-bold">User</big> Dashboard</h1>
                                 <li>
                                     <NavLink to="/dashboard/userHome">
                                         <FaHome></FaHome>
