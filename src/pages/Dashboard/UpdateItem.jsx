@@ -9,9 +9,10 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateItem = () => {
-    const {name, category, recipe, price, _id} = useLoaderData();
+    const menu = useLoaderData();
+    const {name, category, recipe, price, _id} = menu;
     // TODO : not geting the value of single menu
-    console.log(name, category, recipe, price, _id)
+    console.log(name, category, recipe, price, _id, menu)
 
     const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic();
