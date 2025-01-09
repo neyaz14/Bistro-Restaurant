@@ -5,7 +5,7 @@ import useAxiosPublic from "../../Hooks/UseAxiosPublic";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_key = import.meta.env.VITE_IMAGE_Hosting_key;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItem = () => {
@@ -13,10 +13,11 @@ const AddItem = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const onSubmit = async (data) => {
-        // console.log(data)
-        // image upload to imgbb and then get an url
+      
         const imageFile = { image: data.image[0] }
+        console.log(imageFile)
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            // as image file ke stringify kora jabe na, so ekhane hader file dite hobe
             headers: {
                 'content-type': 'multipart/form-data'
             }
@@ -61,8 +62,7 @@ const AddItem = () => {
                             type="text"
                             placeholder="Recipe Name"
                             {...register('name', { required: true })}
-                            {/*
-                                jodi upore required true kore dey then nice required lekhse ken ? */}
+                       
                             required
                             className="input input-bordered w-full" />
                     </div>
