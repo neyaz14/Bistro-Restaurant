@@ -12,13 +12,13 @@ const UpdateItem = () => {
     const menu = useLoaderData();
     const {name, category, recipe, price, _id} = menu;
     // TODO : not geting the value of single menu
-    console.log(name, category, recipe, price, _id, menu)
+    // console.log( menu)
 
     const { register, handleSubmit } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         // image upload to imgbb and then get an url
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -27,7 +27,6 @@ const UpdateItem = () => {
             }
         });
         if (res.data.success) {
-            // now send the menu item data to the server with the image url
             const menuItem = {
                 name: data.name,
                 category: data.category,
@@ -35,7 +34,6 @@ const UpdateItem = () => {
                 recipe: data.recipe,
                 image: res.data.data.display_url
             }
-            // 
             const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
             console.log(menuRes.data)
             if(menuRes.data.modifiedCount > 0){
@@ -49,6 +47,8 @@ const UpdateItem = () => {
                     timer: 1500
                   });
             }
+        }else{
+            console.log('problem with imgbb')
         }
         console.log( 'with image url', res.data);
     };
