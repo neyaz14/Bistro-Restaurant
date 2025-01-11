@@ -4,11 +4,12 @@ import UseAxiosSecure from '../../../Hooks/UseAxiosSecure';
 import UseCart from '../../../Hooks/UseCart';
 import { AuthContext } from '../../../providers/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CheckOutForm = () => {
     const [clientSecret,setclientSecret] = useState('');
     const [transictionId,settransictionId] = useState('');
-    // const 
+    const navigate = useNavigate();
     const {user} = useContext(AuthContext)
     const stripe = useStripe();
     const ellements = useElements();
@@ -69,10 +70,12 @@ const CheckOutForm = () => {
                     date: new Date(), //user momentjs to conver UTC format
                     cartIds : cart.map(item=> item._id),
                     menuIds: cart.map(item=>item.foodId),
-                    transictionId: paymentIntent.id
+                    transictionId: paymentIntent.id,
+                    status: 'pending'
                 }
                 const res = axiosSecure.post('payments', paymentInfo)
                 refetch()
+                navigate('/dashboard/paymentHistory')
             }
         }
     }
