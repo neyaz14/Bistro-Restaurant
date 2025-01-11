@@ -3,9 +3,11 @@ import logo from '../assets/logo.png'
 import { AuthContext } from '../providers/AuthProvider'
 import { Link } from 'react-router-dom'
 import useCart from '../Hooks/UseCart'
+import UseAdmin from '../Hooks/UseAdmin'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [cart, refetch] = useCart();
+  const [isadmin,] = UseAdmin();
   // console.log(cart)
   return (
     <div className='flex items-center  w-full px-12   z-50 bg-opacity-30 bg-black mx-auto fixed  text-white'>
@@ -38,6 +40,12 @@ const Navbar = () => {
               <Link to='/orderFood'>Order Food</Link>
             </li>
           </div>
+          {
+            user && isadmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+          }
+          {
+            user && !isadmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+          }
 
           {!user && (
             <li>

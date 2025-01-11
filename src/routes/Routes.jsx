@@ -18,6 +18,7 @@ import UpdateItem from '../pages/Dashboard/UpdateItem'
 import Payment from '../pages/Dashboard/Payment/Payment'
 import CheckoutForm from '../pages/Dashboard/Payment/CheckoutForm'
 import PaymentHistory from '../pages/Dashboard/Payment/PaymentHistory'
+import UserHome from '../pages/Dashboard/UserHome'
 
 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/paymentHistory',
         element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: '/dashboard/userHome',
+        element: <UserHome></UserHome>
       },
       {
         path: '/dashboard/checkoutForm',
